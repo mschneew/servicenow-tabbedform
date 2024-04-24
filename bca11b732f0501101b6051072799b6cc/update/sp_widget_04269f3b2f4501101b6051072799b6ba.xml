@@ -547,148 +547,192 @@
         <roles>snc_external,snc_internal</roles>
         <script><![CDATA[// form functionality - URL parameter driven
 (function($sp, input, data, options, gs) {
-  /* "use strict"; -linter issues */
-  // populate the 'data' variable
-	data.attachmentUploadSuccessMsg = gs.getMessage("Attachment upload was successful");
-	data.recordAddedMsg = gs.getMessage("Record Added");
-	data.updatedMsg = gs.getMessage("Record Updated");
-	data.exportPDFMsg = gs.getMessage("Export to PDF");
-	data.exportPDFLandMsg = gs.getMessage("Export to PDF (landscape)");
-	data.addAttachmentMsg = gs.getMessage("Add an attachment");
-	data.maxAttachmentSize = parseInt(gs.getProperty("com.glide.attachment.max_size", 1024));
-	data.supportedAttachmentExtensions = gs.getProperty("glide.attachment.extensions", '');
-	data.advancedUIEnabled = (gs.getProperty("glide.ui.advanced") == "true");
-	if (isNaN(data.maxAttachmentSize))
-		data.maxAttachmentSize = 24;
-	data.largeAttachmentMsg = gs.getMessage("Attached files must be smaller than {0} - please try again", "" + data.maxAttachmentSize + "MB");
-	
-	data.isAdmin = gs.hasRightsTo('sp/configure.all/execute', null);
-	data.emptyStateTemplate = options.empty_state_template;
-	var isPopup = ($sp.getParameter("isPopup") == "true" || $sp.getParameter("isPopup") == "1") ? true : false;
+    /* "use strict"; -linter issues */
+    // populate the 'data' variable
+    data.attachmentUploadSuccessMsg = gs.getMessage("Attachment upload was successful");
+    data.recordAddedMsg = gs.getMessage("Record Added");
+    data.updatedMsg = gs.getMessage("Record Updated");
+    data.exportPDFMsg = gs.getMessage("Export to PDF");
+    data.exportPDFLandMsg = gs.getMessage("Export to PDF (landscape)");
+    data.addAttachmentMsg = gs.getMessage("Add an attachment");
+    data.maxAttachmentSize = parseInt(gs.getProperty("com.glide.attachment.max_size", 1024));
+    data.supportedAttachmentExtensions = gs.getProperty("glide.attachment.extensions", '');
+    data.advancedUIEnabled = (gs.getProperty("glide.ui.advanced") == "true");
+    if (isNaN(data.maxAttachmentSize))
+        data.maxAttachmentSize = 24;
+    data.largeAttachmentMsg = gs.getMessage("Attached files must be smaller than {0} - please try again", "" + data.maxAttachmentSize + "MB");
 
-	if (input) {
-		data.table = input.table;
-		data.sys_id = input.sys_id;
-		data.view = input.view;
-		var result = {};
-		if (input._fields) {
-			result = $sp.saveRecord(input.table, input.sys_id, input._fields);
-			data.sys_id = result.sys_id;
-		}
+    data.isAdmin = gs.hasRightsTo('sp/configure.all/execute', null);
+    data.emptyStateTemplate = options.empty_state_template;
+    var isPopup = ($sp.getParameter("isPopup") == "true" || $sp.getParameter("isPopup") == "1") ? true : false;
 
-		if (input.sys_id == '-1')
-			data.isNewRecord = true;
-		if (input.isPopup === true)
-			isPopup = true;
-	} else {
-		data.table = options.table || $sp.getParameter("t") || $sp.getParameter("table") || $sp.getParameter("sl_table");
-		data.sys_id = options.sys_id || $sp.getParameter("sys_id") || $sp.getParameter("sl_sys_id");
-		if (!data.sys_id && options.sys_id_required != "true")
-			data.sys_id = "-1";
-		data.view = options.view || $sp.getParameter("view") || $sp.getParameter("v"); // no default
-	}
+    if (input) {
+        data.table = input.table;
+        data.sys_id = input.sys_id;
+        data.view = input.view;
+        var result = {};
+        if (input._fields) {
+            result = $sp.saveRecord(input.table, input.sys_id, input._fields);
+            data.sys_id = result.sys_id;
+        }
 
-  	if (isPopup && gs.getProperty("glide.service_portal.reference.use_sys_popup_view", "false") == "true") {
-		options.hideRelatedLists = true;
-		options.disableUIActions = "true";
-	}
-	data.hideRelatedLists = options.hideRelatedLists || false;
-	data.disableUIActions = options.disableUIActions === "true || !!(input && input.disableUIActions)";
-  
-	data.isPopup = isPopup;
-	data.query = input.query || $sp.getParameter("query") || options.query || "";
-	data.f = {};
-	if (!data.table)
-		return;
-	
-	// Form widget is not a supported way to view an attachment
-	if (data.table == "sys_attachment") {
-		data.tableUnsupported = true;
-		return;
-	}
+        if (input.sys_id == '-1')
+            data.isNewRecord = true;
+        if (input.isPopup === true)
+            isPopup = true;
+    } else {
+        data.table = options.table || $sp.getParameter("t") || $sp.getParameter("table") || $sp.getParameter("sl_table");
+        data.sys_id = options.sys_id || $sp.getParameter("sys_id") || $sp.getParameter("sl_sys_id");
+        if (!data.sys_id && options.sys_id_required != "true")
+            data.sys_id = "-1";
+        data.view = options.view || $sp.getParameter("view") || $sp.getParameter("v"); // no default
+    }
 
-	if (!GlideTableDescriptor.isValid(data.table))
-		return;
+    if (isPopup && gs.getProperty("glide.service_portal.reference.use_sys_popup_view", "false") == "true") {
+        options.hideRelatedLists = true;
+        options.disableUIActions = "true";
+    }
+    data.hideRelatedLists = options.hideRelatedLists || false;
+    data.disableUIActions = options.disableUIActions === "true || !!(input && input.disableUIActions)";
 
-	if (!data.sys_id)
-		return;
+    data.isPopup = isPopup;
+    data.query = input.query || $sp.getParameter("query") || options.query || "";
+    data.f = {};
+    if (!data.table)
+        return;
 
-	var rec = $sp.getRecord(data.table, data.sys_id);
+    // Form widget is not a supported way to view an attachment
+    if (data.table == "sys_attachment") {
+        data.tableUnsupported = true;
+        return;
+    }
 
-	if (data.sys_id != "-1" && !rec.canRead()) {
-		data.f.loadError = "Not Authorized to read requested record in " + rec.getClassDisplayValue();
-		return; // can't see requested record
-	}
-	if (data.sys_id == "-1" && !rec.canCreate()) {
-		data.f.loadError = "Not Authorized to create records in " + rec.getClassDisplayValue();
-		return; // can't create a new record
-	}
-	
-	data.isValid = rec.isValid() || data.sys_id == "-1";
-	if (!data.isValid)
-		return;
+    if (!GlideTableDescriptor.isValid(data.table))
+        return;
 
-	data.table = rec.getRecordClassName();
-	data.tableLabel = rec.getClassDisplayValue();
-	data.tableHierarchy = GlideDBObjectManager.getTables(data.table).toArray().join();
-	data.canWrite = rec.canWrite();
-	data.canDelete = rec.canDelete();
-	var hasRecordAccess = data.sys_id == "-1" ? rec.canCreate() : data.canWrite;
-	data.canAttach = !options.omitAttachmentButton && hasRecordAccess && gs.hasRole(gs.getProperty('glide.attachment.role')) && !GlideTableDescriptor.get(data.table).getED().getBooleanAttribute("no_attachment");
-	data.f = $sp.getForm(data.table, data.sys_id, data.query, data.view, isPopup);
-	data.RLwidget = $sp.getWidget("tabbed-related-lists-v2", { rl: data.f._related_lists, sys_id: data.sys_id });
+    if (!data.sys_id)
+        return;
 
-	// PRB1335036: show appropriate message when record is in cross app scope
-	data.f.outOfScope = !rec.isInSelectedScope();
-	// Populate scope labels only when needed
-	if (data.f.outOfScope) {
-		data.f.recordScopeLabel = gs.getScopeLabelByRecordId(rec.getUniqueValue());
-		data.f.currentScopeLabel = gs.getCurrentApplicationName();
-	}
-	
-	var policies = data.f.policy || [];
-	policies.forEach(function(policy, index){
-		if (policy['is_ui_data_policy']) {
-			policies[index].onload = true;
-		}
-	});
-	// Activity formatter is hardcoded to set specific options
-	for (var f in data.f._formatters) {
-		var fm = data.f._formatters[f];
-		if (fm.formatter == "activity.xml") {
-			fm.hardcoded = true;
-			fm.widgetInstance = $sp.getWidget('widget-ticket-conversation',
-																{table: data.table,
-																 sys_id: data.sys_id,
-																 includeExtended: true,
-																 hideAttachmentBtn: true,
-																 title: "${Activity}",
-																 use_dynamic_placeholder: true,
-																 btnLabel: "${Post}"});
-		} else if(fm.formatter == "com_glideapp_servicecatalog_veditor" || fm.formatter == "com_glideapp_questionset_default_question_editor") {
-			var qsConfig = $sp.getValue('quick_start_config');
-			if (qsConfig)
-				qsConfig = JSON.parse(qsConfig)[0];
-			fm.widgetInstance = $sp.getWidget(fm.widget, {table: data.table,
-														sys_id: data.sys_id,
-														readonly_variable_editor: qsConfig ? qsConfig.readonly_variable_editor : 'false'});
-		} else
-			fm.widgetInstance = $sp.getWidget(fm.widget, data);
-	}
+    var rec = $sp.getRecord(data.table, data.sys_id);
+
+    if (data.sys_id != "-1" && !rec.canRead()) {
+        data.f.loadError = "Not Authorized to read requested record in " + rec.getClassDisplayValue();
+        return; // can't see requested record
+    }
+    if (data.sys_id == "-1" && !rec.canCreate()) {
+        data.f.loadError = "Not Authorized to create records in " + rec.getClassDisplayValue();
+        return; // can't create a new record
+    }
+
+    data.isValid = rec.isValid() || data.sys_id == "-1";
+    if (!data.isValid)
+        return;
+
+    data.table = rec.getRecordClassName();
+    data.tableLabel = rec.getClassDisplayValue();
+    data.tableHierarchy = GlideDBObjectManager.getTables(data.table).toArray().join();
+    data.canWrite = rec.canWrite();
+    data.canDelete = rec.canDelete();
+    var hasRecordAccess = data.sys_id == "-1" ? rec.canCreate() : data.canWrite;
+    data.canAttach = !options.omitAttachmentButton && hasRecordAccess && gs.hasRole(gs.getProperty('glide.attachment.role')) && !GlideTableDescriptor.get(data.table).getED().getBooleanAttribute("no_attachment");
+    data.f = $sp.getForm(data.table, data.sys_id, data.query, data.view, isPopup);
+    data.RLwidget = $sp.getWidget("tabbed-related-lists-v2", {
+        rl: data.f._related_lists,
+        sys_id: data.sys_id
+    });
+
+    // PRB1335036: show appropriate message when record is in cross app scope
+    data.f.outOfScope = !rec.isInSelectedScope();
+    // Populate scope labels only when needed
+    if (data.f.outOfScope) {
+        data.f.recordScopeLabel = gs.getScopeLabelByRecordId(rec.getUniqueValue());
+        data.f.currentScopeLabel = gs.getCurrentApplicationName();
+    }
+
+    var policies = data.f.policy || [];
+    policies.forEach(function(policy, index) {
+        if (policy['is_ui_data_policy']) {
+            policies[index].onload = true;
+        }
+    });
+
+    var additionalFormatters = new GlideRecord('sys_ui_element');
+    additionalFormatters.addQuery('type', 'formatter');
+    additionalFormatters.addQuery('sys_ui_formatter', '!=', '');
+    additionalFormatters.addQuery('sys_ui_formatter.formatter','!=','com_glideapp_servicecatalog_veditor');
+    additionalFormatters.addQuery('sys_ui_formatter.formatter', '!=', 'activity.xml"');
+    additionalFormatters.addQuery('sys_ui_section.view.name', data.view);
+    additionalFormatters.addQuery('sys_ui_section.name', data.table);
+    additionalFormatters.query();
+    while (additionalFormatters.next()) {
+        if (additionalFormatters.sys_ui_formatter.formatter=='com_glideapp_questionset_default_question_editor') {
+			var fm3 = data.f._formatters['' + additionalFormatters.sys_ui_formatter.sys_id];
+			fm3.section='' + additionalFormatters.sys_ui_section.sys_id;
+        } else {
+            var name = '' + additionalFormatters.element;
+            if (name.indexOf('.') > -1) {
+                name = name.substring(0, name.indexOf('.'));
+            }
+            name = 'formatter-' + name;
+
+            var wdg = new GlideRecord('sp_widget');
+            wdg.addQuery('id', name);
+            wdg.query();
+            if (wdg.next()) {
+                var fm2 = {
+                    'formatter': '' + additionalFormatters.element,
+                    'widget': '' + wdg.sys_id
+                };
+                data.f._formatters['' + additionalFormatters.sys_ui_formatter.sys_id] = fm2;
+            }
+        }
+    }
+
+    // Activity formatter is hardcoded to set specific options
+    for (var f in data.f._formatters) {
+        var fm = data.f._formatters[f];
+
+        if (fm.formatter == "activity.xml") {
+            fm.hardcoded = true;
+            fm.widgetInstance = $sp.getWidget('widget-ticket-conversation', {
+                table: data.table,
+                sys_id: data.sys_id,
+                includeExtended: true,
+                hideAttachmentBtn: true,
+                title: "${Activity}",
+                use_dynamic_placeholder: true,
+                btnLabel: "${Post}"
+            });
+        } else if (fm.formatter == "com_glideapp_servicecatalog_veditor" || fm.formatter == "com_glideapp_questionset_default_question_editor") {
+            var qsConfig = $sp.getValue('quick_start_config');
+            if (qsConfig)
+                qsConfig = JSON.parse(qsConfig)[0];
+
+            fm.widget = 'sp-variable-editor2';
+            fm.widgetInstance = $sp.getWidget(fm.widget, {
+                table: data.table,
+                sys_id: data.sys_id,
+                section: fm.section,
+                readonly_variable_editor: qsConfig ? qsConfig.readonly_variable_editor : 'false'
+            });
+			delete fm.section;
+        } else
+            fm.widgetInstance = $sp.getWidget(fm.widget, data);
+    }
 })($sp, input, data, options, gs);]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 19:58:36</sys_created_on>
         <sys_id>04269f3b2f4501101b6051072799b6ba</sys_id>
-        <sys_mod_count>325</sys_mod_count>
+        <sys_mod_count>351</sys_mod_count>
         <sys_name>Tabbed Form Widget v2</sys_name>
         <sys_package display_value="Tabbed Form v2" source="bca11b732f0501101b6051072799b6cc">bca11b732f0501101b6051072799b6cc</sys_package>
         <sys_policy/>
         <sys_scope display_value="Tabbed Form v2">bca11b732f0501101b6051072799b6cc</sys_scope>
         <sys_update_name>sp_widget_04269f3b2f4501101b6051072799b6ba</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-09-10 21:04:12</sys_updated_on>
+        <sys_updated_by>admin.arne.zoellner</sys_updated_by>
+        <sys_updated_on>2024-04-24 06:58:12</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.isValid && !data.emptyStateTemplate" class="panel panel-default">
   <div class="panel-body wrapper-lg text-center">
     <span ng-if="data.f.loadError">{{::data.f.loadError}}</span>
