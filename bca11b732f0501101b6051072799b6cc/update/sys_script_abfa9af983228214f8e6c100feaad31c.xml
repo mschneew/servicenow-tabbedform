@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>false</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_funding_application_program</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="u_funding_application_program">u_valid_to&lt;javascript:gs.beginningOfLast12Months()^u_active=true^EQ<item endquery="false" field="u_valid_to" goto="false" newquery="false" operator="&lt;" or="false" value="javascript:gs.beginningOfLast12Months()"/>
+            <item endquery="false" field="u_active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Prg: 1 Jahr nach Start des Programmes</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-03 08:53:04</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>abfa9af983228214f8e6c100feaad31c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Prg: 1 Jahr nach Start des Programmes</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tabbed Form v2" source="bca11b732f0501101b6051072799b6cc">bca11b732f0501101b6051072799b6cc</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Form v2">bca11b732f0501101b6051072799b6cc</sys_scope>
+        <sys_update_name>sys_script_abfa9af983228214f8e6c100feaad31c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-03 08:53:04</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=abfa9af983228214f8e6c100feaad31c"/>
+    <sys_translated_text action="INSERT_OR_UPDATE">
+        <documentkey>abfa9af983228214f8e6c100feaad31c</documentkey>
+        <fieldname>message</fieldname>
+        <language>de</language>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-03 08:53:04</sys_created_on>
+        <sys_id>8f6b923d83228214f8e6c100feaad3f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-03 08:53:04</sys_updated_on>
+        <tablename>sys_script</tablename>
+        <value/>
+    </sys_translated_text>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_fax_c" label="Fax" language="de" table="u_funding_application_task">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_fax_c</element>
+            <help/>
+            <hint/>
+            <label>Fax</label>
+            <language>de</language>
+            <name>u_funding_application_task</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>developer3</sys_created_by>
+            <sys_created_on>2024-06-07 08:00:57</sys_created_on>
+            <sys_id>eed5364bc36686d068845d73e4013145</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Fax</sys_name>
+            <sys_package display_value="Tabbed Form v2" source="bca11b732f0501101b6051072799b6cc">bca11b732f0501101b6051072799b6cc</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Form v2">bca11b732f0501101b6051072799b6cc</sys_scope>
+            <sys_update_name>sys_documentation_u_funding_application_task_u_fax_c_de</sys_update_name>
+            <sys_updated_by>developer3</sys_updated_by>
+            <sys_updated_on>2024-06-07 08:00:57</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
