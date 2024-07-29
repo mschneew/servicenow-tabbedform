@@ -2,8 +2,9 @@
     <sp_row action="INSERT_OR_UPDATE">
         <class_name/>
         <order>1</order>
+        <semantic_tag/>
         <sp_column/>
-        <sp_container display_value="Copy of Form (1) - Container 1">c68713fb2f4501101b6051072799b66b</sp_container>
+        <sp_container display_value="Form Tabbed v2 - Container 1">c68713fb2f4501101b6051072799b66b</sp_container>
         <sys_class_name>sp_row</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 20:04:45</sys_created_on>

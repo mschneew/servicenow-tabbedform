@@ -2,7 +2,7 @@
     <m2m_sp_dependency_css_include action="INSERT_OR_UPDATE">
         <order>100</order>
         <sp_css_include display_value="Scrollable Tabs Style - Additional">c3c3eb372f8501101b6051072799b649</sp_css_include>
-        <sp_dependency display_value="TabbedFormScrollDep_v2">9a2063b32f8501101b6051072799b610</sp_dependency>
+        <sp_dependency display_value="Tabbed Form Scroll Dependency v2">9a2063b32f8501101b6051072799b610</sp_dependency>
         <sys_class_name>m2m_sp_dependency_css_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 20:59:16</sys_created_on>

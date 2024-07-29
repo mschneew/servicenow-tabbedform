@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_theme_js_include">
     <m2m_sp_theme_js_include action="INSERT_OR_UPDATE">
         <order/>
-        <sp_js_include display_value="">55e3cf362f4011101b6051072799b6ba</sp_js_include>
+        <sp_js_include display_value="Tabbed Configurattion Enable All v2">55e3cf362f4011101b6051072799b6ba</sp_js_include>
         <sp_theme display_value="La Jolla">a7a6e78277002300a6e592718a10617a</sp_theme>
         <sys_class_name>m2m_sp_theme_js_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>

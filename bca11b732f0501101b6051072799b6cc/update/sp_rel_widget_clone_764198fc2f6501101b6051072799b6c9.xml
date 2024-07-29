@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
     <sp_rel_widget_clone action="INSERT_OR_UPDATE">
-        <child display_value="Copy of Data Table from URL Definition">7e41d43c2f6501101b6051072799b6ce</child>
+        <child display_value="Data Table from URL Definition v2">7e41d43c2f6501101b6051072799b6ce</child>
         <cloned>2022-02-05 18:28:15</cloned>
         <last_validated>2022-02-05 18:28:15</last_validated>
         <parent display_value="Data Table from URL Definition">8ae61f55cb21020000f8d856634c9c93</parent>

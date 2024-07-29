@@ -51,6 +51,7 @@ footer {&#13;
 }</css>
         <draft>false</draft>
         <dynamic_title_structure/>
+        <human_readable_url_structure/>
         <id>lf_v2</id>
         <internal>true</internal>
         <omit_watcher>false</omit_watcher>

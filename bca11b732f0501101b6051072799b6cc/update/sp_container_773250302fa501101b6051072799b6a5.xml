@@ -8,6 +8,7 @@
         <container_class_name/>
         <name>List v2 - Container 1</name>
         <order>1</order>
+        <semantic_tag/>
         <sp_page display_value="list_v2">a4f1d0302fa501101b6051072799b6eb</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>

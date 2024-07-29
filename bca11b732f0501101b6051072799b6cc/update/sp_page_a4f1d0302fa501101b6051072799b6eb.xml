@@ -32,6 +32,7 @@ section.page {&#13;
 }</css>
         <draft>false</draft>
         <dynamic_title_structure>%table %t list</dynamic_title_structure>
+        <human_readable_url_structure/>
         <id>list_v2</id>
         <internal>false</internal>
         <omit_watcher>false</omit_watcher>

@@ -8,6 +8,7 @@
         <container_class_name>container-fluid</container_class_name>
         <name>Form Tabbed v2 - Container 1</name>
         <order>1</order>
+        <semantic_tag/>
         <sp_page display_value="form_tabbed_v2">ca8713fb2f4501101b6051072799b667</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>

@@ -11,7 +11,7 @@
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">c28713fb2f4501101b6051072799b671</sp_column>
-        <sp_widget display_value="widget-form-tabbed-v2">04269f3b2f4501101b6051072799b6ba</sp_widget>
+        <sp_widget display_value="Tabbed Form Widget v2">04269f3b2f4501101b6051072799b6ba</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 20:06:56</sys_created_on>

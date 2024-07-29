@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
     <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
         <sp_dependency display_value="SN Filter">d7ce11589301220064f572edb67ffb52</sp_dependency>
-        <sp_widget display_value="Copy of SN Desktop Filter">c556fc012f0121101b6051072799b6d5</sp_widget>
+        <sp_widget display_value="Tabbed Desktop Filter v2">c556fc012f0121101b6051072799b6d5</sp_widget>
         <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-02-14 11:39:27</sys_created_on>

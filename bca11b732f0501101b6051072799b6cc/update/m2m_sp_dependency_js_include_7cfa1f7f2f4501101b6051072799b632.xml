@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_dependency_js_include">
     <m2m_sp_dependency_js_include action="INSERT_OR_UPDATE">
         <order>100</order>
-        <sp_dependency display_value="tabbedFormDep_v2">c35a577f2f4501101b6051072799b6ce</sp_dependency>
-        <sp_js_include display_value="tabbedFormatters _v2">05aa5b7f2f4501101b6051072799b6b4</sp_js_include>
+        <sp_dependency display_value="Tabbed Form Filter Dependency v2">c35a577f2f4501101b6051072799b6ce</sp_dependency>
+        <sp_js_include display_value="Tabbed Formatters  v2">05aa5b7f2f4501101b6051072799b6b4</sp_js_include>
         <sys_class_name>m2m_sp_dependency_js_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 20:19:40</sys_created_on>

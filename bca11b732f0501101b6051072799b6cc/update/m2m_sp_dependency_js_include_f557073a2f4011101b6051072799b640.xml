@@ -2,7 +2,7 @@
     <m2m_sp_dependency_js_include action="INSERT_OR_UPDATE">
         <order>100</order>
         <sp_dependency display_value="Tabbed Form Modal Dependency v2">11c60ff62f4011101b6051072799b6a5</sp_dependency>
-        <sp_js_include display_value="">d247073a2f4011101b6051072799b610</sp_js_include>
+        <sp_js_include display_value="Tabbed Form Application Processes v2">d247073a2f4011101b6051072799b610</sp_js_include>
         <sys_class_name>m2m_sp_dependency_js_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-06-16 19:28:27</sys_created_on>

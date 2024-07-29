@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
     <sp_css_include action="INSERT_OR_UPDATE">
+        <lazy_load>false</lazy_load>
         <name>Scrollable Tabs Style</name>
+        <rtl_css_file_url/>
         <source>local</source>
         <sp_css display_value="scrollable-tabs-v2.css">63d1e7f32f8501101b6051072799b6b4</sp_css>
         <sys_class_name>sp_css_include</sys_class_name>

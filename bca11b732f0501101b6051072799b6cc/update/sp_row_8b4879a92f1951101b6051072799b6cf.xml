@@ -2,8 +2,9 @@
     <sp_row action="INSERT_OR_UPDATE">
         <class_name>fill-section flex-row</class_name>
         <order>1</order>
+        <semantic_tag/>
         <sp_column/>
-        <sp_container display_value="Copy of List &amp; Form (1) - Container 1">4b4879a92f1951101b6051072799b6cc</sp_container>
+        <sp_container display_value="List &amp; Tabbed Form - Container 1">4b4879a92f1951101b6051072799b6cc</sp_container>
         <sys_class_name>sp_row</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-13 19:49:11</sys_created_on>

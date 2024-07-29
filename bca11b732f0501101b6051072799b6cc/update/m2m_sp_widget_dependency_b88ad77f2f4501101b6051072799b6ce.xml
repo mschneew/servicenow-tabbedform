@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
     <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
-        <sp_dependency display_value="tabbedFormDep_v2">c35a577f2f4501101b6051072799b6ce</sp_dependency>
-        <sp_widget display_value="widget-form-tabbed-v2">04269f3b2f4501101b6051072799b6ba</sp_widget>
+        <sp_dependency display_value="Tabbed Form Filter Dependency v2">c35a577f2f4501101b6051072799b6ce</sp_dependency>
+        <sp_widget display_value="Tabbed Form Widget v2">04269f3b2f4501101b6051072799b6ba</sp_widget>
         <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 20:17:45</sys_created_on>

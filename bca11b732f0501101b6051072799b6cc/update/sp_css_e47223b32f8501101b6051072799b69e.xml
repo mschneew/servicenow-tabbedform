@@ -81,5 +81,6 @@ ul.dropdown-menu li.active a, ul.dropdown-menu li a:hover {&#13;
         <sys_update_name>sp_css_e47223b32f8501101b6051072799b69e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2023-02-10 21:19:45</sys_updated_on>
+        <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_css>
 </record_update>

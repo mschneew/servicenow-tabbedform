@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
     <sp_rel_widget_clone action="INSERT_OR_UPDATE">
-        <child display_value="Copy of SN Desktop Filter">c556fc012f0121101b6051072799b6d5</child>
+        <child display_value="Tabbed Desktop Filter v2">c556fc012f0121101b6051072799b6d5</child>
         <cloned>2023-02-14 11:39:27</cloned>
         <last_validated>2023-02-14 11:39:27</last_validated>
         <parent display_value="SN Desktop Filter">81060168c713220023c86c158b976396</parent>
